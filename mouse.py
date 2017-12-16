@@ -33,3 +33,6 @@ new_im = MatrixToImage(data)
 plt.imshow(data, cmap=plt.cm.gray, interpolation='nearest')
 new_im.show()
 new_im.save('mouse_1.png')
+
+
+dddd
