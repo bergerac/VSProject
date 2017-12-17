@@ -8,21 +8,18 @@
 #include "treeitem.h"
 #include "treemodel.h"
 
-#include <QStringList>
-
-TreeModel::TreeModel(const QString &data, QObject *parent)
+TreeModel::TreeModel(const QList<TreeItemStruct> &p_treeData, QObject *parent)
     : QAbstractItemModel(parent)
 {
 	TreeItemStruct rootData;
 	rootData.bChecked = false;
-	rootData.strName = "Title";
-	rootData.nId = 0;
+	rootData.strName = QStringLiteral("Title");
 	rootData.bLeaf = false;
-	rootData.nParentId = 0;
+	rootData.strParentCode = "";
     rootItem = new TreeItem(rootData);
 	if (NULL != rootItem)
 	{
-		setupModelData(data.split(QString("\n")), rootItem);
+		setupModelData(p_treeData, rootItem);
 	}
 }
 
@@ -56,12 +53,19 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
 	{
 		return QVariant();
 	}
-	
+
+	// 添加图标  
+	if (role == Qt::DecorationRole && index.column() == 0)
+	{
+		return QIcon("images/timg.jpg");
+	}
+  
 	if (role != Qt::DisplayRole)
 	{
 		return QVariant();
 	}
 	
+	// 显示节点数据值
 	TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
     return item->data(index.column());
 }
@@ -112,11 +116,9 @@ QModelIndex TreeModel::index(int row, int column, const QModelIndex &parent) con
 		{
 			return createIndex(row, column, childItem);
 		}
-		else
-		{
-			return QModelIndex();
-		}
 	}
+
+	return QModelIndex();
 }
 
 QModelIndex TreeModel::parent(const QModelIndex &index) const
@@ -163,7 +165,7 @@ int TreeModel::rowCount(const QModelIndex &parent) const
 }
 
 
-void TreeModel::setupModelData(QList<TreeItemStruct> &p_listData, TreeItem *parent)
+void TreeModel::setupModelData(const QList<TreeItemStruct> &p_listData, TreeItem *parent)
 {
     QList<TreeItem*> parents;
     QList<int> indentations;

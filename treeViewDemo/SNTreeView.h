@@ -2,7 +2,8 @@
 #define SNTREEVIEW_H
 
 #include <QTreeView>
-#include <QStandardItemModel>
+#include "treemodel.h"
+#include "Data.h"
 
 class SNTreeView : public QTreeView
 {
@@ -20,6 +21,7 @@ public:
 	//设置是否带复选框
 	void setCheckable(const bool& p_bCheck = false);
 	bool getCheckable();
+	void setTreeModel(const QList<TreeItemStruct> &p_treeData);
 
 protected:
 	void mouseMoveEvent(QMouseEvent * event);
@@ -49,9 +51,8 @@ private:
 
 private:
 	QModelIndex			m_MousePressItemIndex;
-	QStandardItemModel* m_pItemModel;
+	TreeModel*			m_pItemModel;
 	bool				m_bCheckable;
-	QBrush				m_itemBrush;
 };
 
 #endif // SNTREEVIEW_H

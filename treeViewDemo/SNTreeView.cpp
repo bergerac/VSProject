@@ -12,7 +12,7 @@ SNTreeView::SNTreeView(QWidget *parent)
 	, m_bCheckable(false)
 	, m_pItemModel(NULL)
 {
-	
+	initStyle();
 }
 
 SNTreeView::~SNTreeView()
@@ -28,24 +28,6 @@ void SNTreeView::initStyle()
 	this->setFrameShadow(QFrame::Plain);
 	this->header()->setStretchLastSection(true);
 	setStyleSheet("QTreeView {border:none;}");
-
-	m_pItemModel = new QStandardItemModel(this);
-	if(NULL != m_pItemModel)
-	{
-		this->setModel(m_pItemModel);
-		m_itemBrush = m_pItemModel->item(0, 0)->background();
-	}
-
-	//是否可选
-	if (getCheckable())
-	{
-		
-	}
-	else
-	{
-		
-	}
-	this->setCheckable(getCheckable());
 
 	connect(this, SIGNAL(expanded(const QModelIndex&)), this, SLOT(slot_resizeTreeColumn(const QModelIndex &)));
 }
@@ -191,6 +173,26 @@ void SNTreeView::search(const QString &p_str)
 	{
 		m_pItemModel->fuzzySearch(this, p_str);
 	}
+}
+
+void SNTreeView::setTreeModel(const QList<TreeItemStruct> &p_treeData)
+{
+	m_pItemModel = new TreeModel(p_treeData, this);
+	if (NULL != m_pItemModel)
+	{
+		this->setModel(m_pItemModel);
+	}
+
+	//是否可选
+	/*if (getCheckable())
+	{
+
+	}
+	else
+	{
+
+	}*/
+//	this->setCheckable(getCheckable());
 }
 
 //void SNTreeView::searchChild(QStandardItem *p_pItem, const QString &p_str)

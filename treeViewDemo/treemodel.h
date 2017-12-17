@@ -5,6 +5,7 @@
 #include <QModelIndex>
 #include <QVariant>
 #include <QTreeView>
+#include "Data.h"
 
 class TreeItem;
 
@@ -13,7 +14,7 @@ class TreeModel : public QAbstractItemModel
     Q_OBJECT
 
 public:
-    explicit TreeModel(const QString &data, QObject *parent = 0);
+    explicit TreeModel(const QList<TreeItemStruct> &p_treeData, QObject *parent = 0);
     ~TreeModel();
 
     QVariant data(const QModelIndex &index, int role) const override;
@@ -34,7 +35,7 @@ public:
 	void parentExpand(QTreeView* p_tree, TreeItem *p_pItem);
 
 private:
-    void setupModelData(QList<TreeItemStruct> &p_listData, TreeItem *parent);
+    void setupModelData(const QList<TreeItemStruct> &p_listData, TreeItem *parent);
 
     TreeItem *rootItem;
 };

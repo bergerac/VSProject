@@ -7,6 +7,8 @@
 #include <QStringList>
 #include "treeitem.h"
 
+Q_DECLARE_METATYPE(TreeItemStruct)
+
 TreeItem::TreeItem(const TreeItemStruct &p_data, TreeItem *parent)
 {
     m_parentItem = parent;
@@ -40,9 +42,9 @@ int TreeItem::columnCount() const
 
 QVariant TreeItem::data(const int& p_nCol) const
 {
-	QVariant var;
-	var.setValue(m_itemData);
-    return var;
+	/*QVariant var;
+	var.setValue(m_itemData);*/
+	return m_itemData.strName;//var;
 }
 
 TreeItem *TreeItem::parentItem()

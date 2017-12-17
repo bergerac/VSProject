@@ -43,24 +43,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SNHeaderView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_SNHeaderView.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_SNHeaderView.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="SNItemModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_SNItemModel.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_SNItemModel.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="SNTreeView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,6 +64,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_treemodel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_treeViewWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <ClCompile Include="treeViewWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -91,28 +76,19 @@
     <ClCompile Include="GeneratedFiles\Release\moc_treeViewWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_treeViewWidget.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="SNHeaderView.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="SNItemModel.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="SNTreeView.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="treemodel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="treeViewWidget.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="treeViewWidget.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="treeViewWidget.h">
+      <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="treeViewWidget.ui">
       <Filter>Form Files</Filter>
@@ -124,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_treeViewWidget.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
